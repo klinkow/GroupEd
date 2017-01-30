@@ -9,6 +9,15 @@ import { GroupMakerComponent } from './group-maker/group-maker.component';
 import { DisplayGroupsComponent } from './display-groups/display-groups.component';
 import { DisplayClassesComponent } from './display-classes/display-classes.component';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
+import { masterFirebaseConfig } from './api-keys';
+import { AngularFireModule } from 'angularfire2';
+
+export const firebaseConfig = {
+  apiKey: masterFirebaseConfig.apiKey,
+  authDomain: masterFirebaseConfig.authDomain,
+  databaseURL: masterFirebaseConfig.databaseURL,
+  storageBucket: masterFirebaseConfig.storageBucket
+};
 
 @NgModule({
   declarations: [
@@ -22,7 +31,8 @@ import { StudentDetailComponent } from './student-detail/student-detail.componen
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
