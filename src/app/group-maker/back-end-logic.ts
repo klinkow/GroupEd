@@ -3,23 +3,6 @@ import { Group } from '../group.model';
 import { Class } from '../class.model';
 
 
-class Student {
-  constructor(public name: string, public number: number) { }
-};
-
-class Group {
-  constructor(public name: string, public students: Student[]) { }
-};
-
-var students: Student[] = [
-  new Student("Alice", 4), new Student("Andrew", 4), new Student("Alyssa", 4),
-  new Student("Aticus", 4), new Student("Bill", 3), new Student("Bonny", 3),
-  new Student("Bethany", 3), new Student("Caitlin", 2), new Student("Coco", 2),
-  new Student("Dana", 1), new Student("David", 1), new Student("Danielle", 1),
-  new Student("Dillon", 1), new Student("Dina", 1), new Student("Evalyn", 0),
-];
-
-
 var numberOfGroups: number = 5;
 var numberOfStudents : number = students.length;
 
@@ -139,17 +122,18 @@ function makeGroupsHomogenouslyPlusStar(students) {
   for (var n = 0; n < numberOfGroups; n++) {
     groups.push(new Group("group".concat((n+1).toString()), []));
   };
-  for (var q = 0 ; q < this.numberOfGroups; q++) {
-    groups[q].students.push(students[q])
+  for (var q = 0; q < this.numberOfGroups; q++) {
+    groups[q].students.push(students[(this.numberOfGroups-1)-q])
   };
+  students.splice(0, this.numberOfGroups);
 
-  //what's going on??????
   for (var r = 0; r < this.numberOfGroups; r++) {
     for(var s = 0; s < (this.numberOfStudents/this.numberOfGroups) - 1; s++) {
       if (students[s]) {
         groups[r].students.push(students[s]);
       };
     };
+    students.splice(0, (this.numberOfStudents/this.numberOfGroups)-1);
   };
   groups.forEach((group) => {
     console.log("GROUPS STAR");
