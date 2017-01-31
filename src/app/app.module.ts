@@ -14,6 +14,8 @@ import { masterFirebaseConfig } from './api-keys';
 import { AngularFireModule, AuthProviders, AuthMethods, FIREBASE_PROVIDERS, AngularFire, } from 'angularfire2';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthguardService } from './authguard.service';
 
 
 export const firebaseConfig = {
@@ -37,7 +39,8 @@ const firebaseAuthConfig = {
     DisplayClassesComponent,
     StudentDetailComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,7 @@ const firebaseAuthConfig = {
     routing,
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
   ],
-  providers: [],
+  providers: [AuthguardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
