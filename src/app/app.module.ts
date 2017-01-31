@@ -9,13 +9,20 @@ import { DisplayGroupsComponent } from './display-groups/display-groups.componen
 import { DisplayClassesComponent } from './display-classes/display-classes.component';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
 import { masterFirebaseConfig } from './api-keys';
-import { AngularFireModule } from 'angularfire2';
 import { routing } from './app.routing';
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+
+
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
   authDomain: masterFirebaseConfig.authDomain,
   databaseURL: masterFirebaseConfig.databaseURL,
   storageBucket: masterFirebaseConfig.storageBucket
+};
+
+const firebaseAuthConfig = {
+  provider: AuthProviders.Password,
+  method: AuthMethods.Password
 };
 
 @NgModule({
@@ -32,7 +39,7 @@ export const firebaseConfig = {
     FormsModule,
     HttpModule,
     routing,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

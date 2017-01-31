@@ -8,6 +8,11 @@
     </ul>
   </div>
 </nav>
+
+<div> {{ (af.auth | async)?.uid }} </div>
+  <button (click)="login()">Login</button>
+  <button (click)="logout()">Logout</button>
+
 <div class="container">
   <router-outlet></router-outlet>
 </div>
