@@ -12,6 +12,7 @@ import { DisplayClassesComponent } from './display-classes/display-classes.compo
 import { StudentDetailComponent } from './student-detail/student-detail.component';
 import { masterFirebaseConfig } from './api-keys';
 import { AngularFireModule } from 'angularfire2';
+import { ClassesComponent } from './classes/classes.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -27,7 +28,8 @@ export const firebaseConfig = {
     GroupMakerComponent,
     DisplayGroupsComponent,
     DisplayClassesComponent,
-    StudentDetailComponent
+    StudentDetailComponent,
+    ClassesComponent
   ],
   imports: [
     BrowserModule,
