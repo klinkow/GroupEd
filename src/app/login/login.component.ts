@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
       }).then(
         (success) => {
         console.log(success);
-        this.router.navigate(['/']);
+        this.router.navigate(['/dashboard']);
       }).catch(
         (err) => {
         console.log(err);
