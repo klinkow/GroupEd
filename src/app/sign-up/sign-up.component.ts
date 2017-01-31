@@ -24,7 +24,8 @@ export class SignUpComponent implements OnInit {
         (success) => {
         console.log(success);
         this.af.database.list('users').update(success.auth.uid, {
-          name: formData.value.name
+          name: formData.value.name,
+          email: formData.value.name
         });
         this.router.navigate(['/dashboard'])
       }).catch(
