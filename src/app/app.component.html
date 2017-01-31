@@ -1,7 +1,13 @@
-<!--  Navbar goes here-->
-
-<h1>
-  {{title}}
-</h1>
-
-{{console}}
+<nav>
+  <div class="nav-wrapper blue">
+    <a routerLink="" class="brand-logo left">GroupEd</a>
+    <ul class="right">
+      <li><a routerLink="">About</a></li>
+      <li><a routerLink="">Login</a></li>
+      <li><a routerLink="">SignUp</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
