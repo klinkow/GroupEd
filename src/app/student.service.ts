@@ -5,7 +5,7 @@ import { Student } from './student.model';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Injectable()
-export class GroupService {
+export class StudentService {
   students: FirebaseListObservable<any[]>;
   constructor(private angularFire: AngularFire) {
     this.students = angularFire.database.list('students');
