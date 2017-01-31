@@ -4,7 +4,7 @@
     <ul class="right">
       <span *ngIf="!(af.auth | async)">
         <li><a routerLink="login">Login</a></li>
-        <li><a routerLink="sign">SignUp</a></li>
+        <li><a routerLink="signup">SignUp</a></li>
       </span>
       <span *ngIf="(af.auth | async)">
         <li><a routerLink="dashboard">Dashboard</a></li>

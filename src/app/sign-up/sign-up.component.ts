@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+import { AuthguardService } from '.././authguard.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,8 +9,9 @@ import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+  @Output() uid: string;
 
-  constructor(private af: AngularFire, private router: Router) { }
+  constructor(private af: AngularFire, private router: Router, private authService: AuthguardService) { }
 
   onSubmit(formData) {
     if(formData.valid) {
@@ -19,12 +21,16 @@ export class SignUpComponent implements OnInit {
         password: formData.value.password
       }).then(
         (success) => {
+          this.af.database.list('users').push({
+              blame: formData.value.userName
+          });
         console.log(success);
-        this.router.navigate(['/login'])
+        this.uid = success.auth.uid;
+        this.router.navigate(['/dashboard'])
       }).catch(
         (err) => {
         console.log(err);
-        this.router.navigate(['/login']);
+        this.router.navigate(['/signup']);
       })
     }
   }
