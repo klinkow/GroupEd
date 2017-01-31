@@ -17,6 +17,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthguardService } from './authguard.service';
 import { SplashComponent } from './splash/splash.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 export const firebaseConfig = {
@@ -42,7 +43,8 @@ const firebaseAuthConfig = {
     LoginComponent,
     SignUpComponent,
     DashboardComponent,
-    SplashComponent
+    SplashComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
