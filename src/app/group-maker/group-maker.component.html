@@ -1,3 +1,21 @@
-<p>
-  group-maker works!
-</p>
+<form>
+  <select #newSubject>
+    <option [value]=''></option>
+    <option [value]='treehouse'>Tree House</option>
+    <option [value]='math'>Math</option>
+    <option [value]='reading'>English</option>
+  </select>
+  <input #newNumberOfGroup placeholder="Number of Groups">
+  <button (click)="submitHeterogeneously(newSubject.value, newNumberOfGroup.value); newSubject.value=''; newNumberOfGroup.value='';">Heterogeneous Group</button>
+  <button (click)="submitHomogenously(newSubject.value, newNumberOfGroup.value); newSubject.value=''; newNumberOfGroup.value='';">Homogeneous Group</button>
+  <button (click)="submitHomogenouslyPlusStar(newSubject.value, newNumberOfGroup.value); newSubject.value=''; newNumberOfGroup.value=''">Homogeneous Group with a Star Student</button>
+</form>
+<br><br><br>
+
+
+<button (click)="runFunction()">Run</button>
+
+<button (click)="show()">Show</button>
+<div *ngIf="runFunctionClick">
+  {{ students[0].name }}
+</div>
