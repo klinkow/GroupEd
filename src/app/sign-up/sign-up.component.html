@@ -1,0 +1,16 @@
+<h2>Sign Up!</h2>
+<form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+  <p>
+    <label> Email Address:
+        <input type="text" name="email" (ngModel)="email" required>
+    </label>
+  </p>
+  <p>
+    <label> Password:
+        <input type="password" name="password" (ngModel)="password" required>
+    </label>
+  </p>
+
+    <button type="submit" [disabled]="!formData.valid">Submit</button>
+    <a routerLink="/">Cancel</a>
+</form>

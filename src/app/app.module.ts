@@ -8,9 +8,12 @@ import { GroupMakerComponent } from './group-maker/group-maker.component';
 import { DisplayGroupsComponent } from './display-groups/display-groups.component';
 import { DisplayClassesComponent } from './display-classes/display-classes.component';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
-import { masterFirebaseConfig } from './api-keys';
 import { routing } from './app.routing';
-import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+
+import { masterFirebaseConfig } from './api-keys';
+import { AngularFireModule, AuthProviders, AuthMethods, FIREBASE_PROVIDERS, AngularFire, } from 'angularfire2';
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 export const firebaseConfig = {
@@ -32,7 +35,9 @@ const firebaseAuthConfig = {
     GroupMakerComponent,
     DisplayGroupsComponent,
     DisplayClassesComponent,
-    StudentDetailComponent
+    StudentDetailComponent,
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

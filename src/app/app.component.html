@@ -3,15 +3,11 @@
     <a routerLink="" class="brand-logo left">GroupEd</a>
     <ul class="right">
       <li><a routerLink="">About</a></li>
-      <li><a routerLink="">Login</a></li>
-      <li><a routerLink="">SignUp</a></li>
+      <li><a routerLink="login">Login</a></li>
+      <li><a routerLink="signup">SignUp</a></li>
     </ul>
   </div>
 </nav>
-
-<div> {{ (af.auth | async)?.uid }} </div>
-  <button (click)="login()">Login</button>
-  <button (click)="logout()">Logout</button>
 
 <div class="container">
   <router-outlet></router-outlet>
