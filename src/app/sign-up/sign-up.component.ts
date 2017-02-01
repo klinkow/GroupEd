@@ -22,6 +22,7 @@ export class SignUpComponent{
         (success) => {
         this.af.database.list('users').update(success.auth.uid, {
           name: formData.value.name,
+          userName: formData.value.userName,
           email: formData.value.email
         });
         this.router.navigate(['/dashboard/' + success.auth.uid]);

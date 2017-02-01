@@ -33,7 +33,7 @@ const appRoutes: Routes = [
     component: SignUpComponent
   },
   {
-    path: 'dashboard/:uid',
+    path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthguardService]
   }
