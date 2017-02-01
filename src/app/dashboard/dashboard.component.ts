@@ -13,12 +13,14 @@ import { AuthguardService } from '.././authguard.service';
 export class DashboardComponent implements OnInit {
   public currentUser;
   public uid: string;
+  public addingClass: boolean = false;
 
   constructor(private af: AngularFire, private as: AuthguardService, private userService: UserService) {
     this.af.auth.subscribe(user => {
       console.log(user.uid);
       this.uid = user.uid;
     })
+    
     this.userService.getUser(this.uid).subscribe(lastData => {
       this.currentUser = lastData;
       console.log(this.currentUser);
@@ -26,4 +28,8 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {  }
+
+  showNewClassForm() {
+    this.addingClass = !this.addingClass;
+  }
 }

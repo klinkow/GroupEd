@@ -254,14 +254,15 @@ export class GroupMakerComponent {
     this.makeGroupsHomogenouslyPlusStar(this.sortDescending(students, scoreType, numberOfGroups));
   }
 
-  groupHeterogeneouslyWeirdScale(students) {
-    this.makeGroupsHetero(this.snakeStudents(this.makeToScale(this.sortDescending(students), scoreToScale)));
-  }
-
-  groupHomogeneouslyWeirdScale(students) {
-    this.makeGroupsHomogenous(this.makeToScale(this.sortDescending(students), scoreToScale));
-  }
-
-  groupHomogenouslyWeirdScalePlusStar(students) {
-    this.makeGroupsHomogenouslyPlusStar(this.makeToScale(this.sortDescending(students), scoreToScale));
-  }
+  // groupHeterogeneouslyWeirdScale(students, scoreToScale) {
+  //   this.makeGroupsHetero(this.snakeStudents(this.makeToScale(this.sortDescending(students), scoreToScale)));
+  // }
+  //
+  // groupHomogeneouslyWeirdScale(students, scoreToScale) {
+  //   this.makeGroupsHomogenous(this.makeToScale(this.sortDescending(students), scoreToScale));
+  // }
+  //
+  // groupHomogenouslyWeirdScalePlusStar(students, scoreToScale) {
+  //   this.makeGroupsHomogenouslyPlusStar(this.makeToScale(this.sortDescending(students), scoreToScale));
+  // }
+}

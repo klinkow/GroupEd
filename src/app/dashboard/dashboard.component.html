@@ -8,3 +8,5 @@
 </div>
 
 <button type="button" (click)="showNewClassForm()">Add A Class</button>
+
+<newclass *ngIf="addingClass" [currentUser]="currentUser"></newclass>
