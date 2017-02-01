@@ -50,10 +50,9 @@ export class GroupMakerComponent implements OnInit {
   submitHeterogeneously(scoreType, numberOfGroups) {
     console.log(this.students, scoreType, parseInt(numberOfGroups));
     this.groupHeterogeneously(this.students, scoreType, parseInt(numberOfGroups));
-    console.log(this.groupHeterogeneously(this.students, scoreType, parseInt(numberOfGroups)));
   }
 
-  submitHomogenously(scoreType, numberOfGroups) {
+  submitHomogeneously(scoreType, numberOfGroups) {
     console.log(this.students, scoreType, parseInt(numberOfGroups));
     this.groupHomogeneously(this.students, scoreType, parseInt(numberOfGroups));
     // implement the input data to function;
@@ -138,11 +137,10 @@ export class GroupMakerComponent implements OnInit {
       };
       students.splice(0, this.numberOfGroups);
     };
-    // groups.forEach((group) => {
-    //   console.log("GROUPS HETEROGENEOUS");
-    //   console.log(group.name);
-    //   console.log(group.students);
-    // });
+    groups.forEach((group) => {
+      console.log("GROUPS HETEROGENEOUS");
+      console.log(group.students);
+    });
     return groups;
   }
 
@@ -180,11 +178,10 @@ export class GroupMakerComponent implements OnInit {
       };
       students.splice(0, (this.numberOfStudents/this.numberOfGroups)-1);
     };
-    // groups.forEach((group) => {
-    //   console.log("GROUPS STAR");
-    //   console.log(group.name);
-    //   console.log(group.students);
-    // });
+    groups.forEach((group) => {
+      console.log("GROUPS STAR");
+      console.log(group.students);
+    });
     return groups;
   }
 
