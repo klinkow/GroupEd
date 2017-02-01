@@ -16,12 +16,7 @@
         <input #newSubject>
       </div>
 
-      <div>
-        <label>Period:</label>
-        <br>
-        <input #newPeriod>
-      </div>
-      <button (click)="submitForm(newName.value, newSubject.value, newPeriod.value); newName.value=''; newSubject.value=''; newPeriod.value=''">Add</button>
+      <button (click)="submitForm(newName.value, newSubject.value); newName.value=''; newSubject.value=''">Add</button>
     </div>
   </div>
 </div>
