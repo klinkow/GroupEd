@@ -1,9 +1,12 @@
 
 <sidebar [currentUser]="currentUser" class="col s2"></sidebar>
 
-<div class="col s10">
-  <h1 class="center well">HEY! You're on the dashboard!</h1>
 
+<div class="container">
+  <div class="col s10">
+    <h1 class="center well">HEY! You're on the dashboard!</h1>
+    <app-display-classes></app-display-classes>
+  </div>
   <h2>User Name: {{currentUser?.name}}</h2>
 </div>
 

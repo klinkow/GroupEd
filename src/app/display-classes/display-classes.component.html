@@ -1,10 +1,25 @@
-<div class="classes-body">
-  <div class="class-card">
-    <div class="card-head">
-      <h4>Period</h4>
+<div class="container">
+
+  <div class="card-container">
+    <div *ngFor= "let smlass of smlasses" class="class-card">
+      <div class="card {{cardColor()}} darken-2">
+        <div class="card-content white-text">
+          <span class="card-title">{{smlass.name}}</span>
+        </div>
+      </div>
     </div>
-    <div *ngFor= "let student of students | async" class="card-main">
-      <h1>{{student[0].name}}</h1>
+
+
+    <div (click)="toggleClass()" class="class-card">
+      <div class="card">
+        <div class="card-content white-text">
+          <span class="card-title">Add a new class:</span>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div *ngIf="toggleClassForm">
+    <newclass></newclass>
   </div>
 </div>
