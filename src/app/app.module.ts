@@ -19,6 +19,7 @@ import { NewclassComponent } from './newclass/newclass.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AuthguardService } from './authguard.service';
 import { UserService } from './user.service';
+import { NewstudentComponent } from './newstudent/newstudent.component';
 
 
 export const firebaseConfig = {
@@ -46,7 +47,9 @@ const firebaseAuthConfig = {
     DashboardComponent,
     SplashComponent,
     NewclassComponent,
-    SidebarComponent
+    SidebarComponent,
+    NewstudentComponent
+
   ],
   imports: [
     BrowserModule,

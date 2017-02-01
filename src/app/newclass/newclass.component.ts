@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Class } from '../class.model';
+import { AngularFire } from 'angularfire2';
 
 
 @Component({
@@ -10,25 +11,17 @@ import { Class } from '../class.model';
 export class NewclassComponent implements OnInit {
   newClass: Class;
   students = [{name: "sally"}, {name: "harry"}, {name:"bill"}];
+  @Input() currentUser;
 
 
-  constructor() { }
+  constructor(private af: AngularFire) { }
 
   submitForm(name: string, subject: string, period: number) {
   var newClass: Class = new Class(name, [], [], subject, 0, period);
-  // this.user.classes.push(newClass);
+  this.af.database.list('users').update(this.currentUser, {
+    class: newClass
+  });
 }
-
-
-  // onSubmit(formData){
-  //   console.log(formData);
-  //   if(formData.valid){
-  //     this.newClass = new Class(formData.value.newClassName, formData.value.newClassSubject, formData.value.newClassPeriod, formData.value.student.selected, 0, 0);
-  //     this.fuckingStudents.push(this.newClass);
-  //   }
-  // }
-
-  // this.students.filter(_ => _.selected).forEach(_ => { ... })
 
   ngOnInit() {
   }

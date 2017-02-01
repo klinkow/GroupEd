@@ -1,31 +1,29 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '.././user.service';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Location } from '@angular/common';
 import { AngularFire, AuthProviders, AuthMethods, FirebaseObjectObservable } from 'angularfire2';
 import { AuthguardService } from '.././authguard.service';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
   providers: [UserService]
 })
+
 export class DashboardComponent implements OnInit {
-public currentUser: FirebaseObjectObservable<any>;
+  public currentUser;
   public uid: string;
 
-  constructor(private af: AngularFire, private as: AuthguardService, private userService: UserService, private route: ActivatedRoute, private location: Location) {
+  constructor(private af: AngularFire, private as: AuthguardService, private userService: UserService) {
     this.af.auth.subscribe(user => {
-      console.log(user);
+      console.log(user.uid);
+      this.uid = user.uid;
     })
+    this.userService.getUser(this.uid).subscribe(lastData => {
+      this.currentUser = lastData;
+      console.log(this.currentUser);
+    });
   }
 
-  ngOnInit() {
-
-
-    // this.route.params.forEach((urlParameters) => {
-    //   this.uid = urlParameters['uid'];
-    // });
-    // this.currentUser = this.userService.getUser(this.uid)
-  }
+  ngOnInit() {  }
 }
