@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { UserService } from '.././user.service';
 import { AngularFire, AuthProviders, AuthMethods, FirebaseObjectObservable } from 'angularfire2';
 import { AuthguardService } from '.././authguard.service';
@@ -12,6 +12,7 @@ import { AuthguardService } from '.././authguard.service';
 
 export class DashboardComponent implements OnInit {
   public currentUser;
+  @Output() classes;
   public uid: string;
   public addingClass: boolean = false;
 
@@ -20,11 +21,15 @@ export class DashboardComponent implements OnInit {
       console.log(user.uid);
       this.uid = user.uid;
     })
-    
+
     this.userService.getUser(this.uid).subscribe(lastData => {
       this.currentUser = lastData;
-      console.log(this.currentUser);
     });
+
+    this.af.database.list('/users/' + this.uid + '/classes').subscribe(lastData => {
+      this.classes = lastData;
+      console.log(this.classes);
+    })
   }
 
   ngOnInit() {  }
