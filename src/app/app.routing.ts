@@ -6,7 +6,6 @@ import { SplashComponent } from './splash/splash.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ClassesComponent } from './classes/classes.component';
 import { AuthguardService } from './authguard.service';
 
 const appRoutes: Routes = [
@@ -20,8 +19,8 @@ const appRoutes: Routes = [
     component: SplashComponent
   },
   {
-    path: 'classes',
-    component: ClassesComponent
+    path: 'display-classes',
+    component: DisplayClassesComponent
   },
   {
     path: 'login',

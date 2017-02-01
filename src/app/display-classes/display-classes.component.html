@@ -1,10 +1,10 @@
-<div *ngFor="let student of students | async">
-<h2>{{student.name}}</h2>
-<h4>{{student.mathScore}}</h4>
-<h4>{{student.readingScore}}</h4>
-<h4>{{student.treehouseScore}}</h4>
+<div class="classes-body">
+  <div class="class-card">
+    <div class="card-head">
+      <h4>Period <span>{{class.period}}</span></h4>
+    </div>
+    <div class="card-main">
+      <h1>{{class.name}}</h1>
+    </div>
+  </div>
 </div>
-
-<!-- <ul *ngFor="let student of students">
-  <li (click)="goToDetailPage(student)">{{class.student.name}}</li>
-</ul> -->
