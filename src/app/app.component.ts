@@ -17,6 +17,6 @@ export class AppComponent {
   }
 
   goToDashBoard(user) {
-   this.router.navigate(['dashboard', user.uid]);
+   this.router.navigate(['dashboard']);
  }
 }
