@@ -11,6 +11,7 @@ import { StudentDetailComponent } from './student-detail/student-detail.componen
 import { routing } from './app.routing';
 
 import { masterFirebaseConfig } from './api-keys';
+
 import { AngularFireModule, AuthProviders, AuthMethods, FIREBASE_PROVIDERS, AngularFire, } from 'angularfire2';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
