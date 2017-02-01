@@ -16,9 +16,14 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SplashComponent } from './splash/splash.component';
+
+import { NewclassComponent } from './newclass/newclass.component';
+
+
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AuthguardService } from './authguard.service';
 import { UserService } from './user.service';
+
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -44,7 +49,11 @@ const firebaseAuthConfig = {
     SignUpComponent,
     DashboardComponent,
     SplashComponent,
+
+    NewclassComponent
+
     SidebarComponent
+
   ],
   imports: [
     BrowserModule,
