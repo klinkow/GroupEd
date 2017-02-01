@@ -2,8 +2,8 @@
   <li>
     <div class="collapsible-header"><i class="material-icons"></i>Classes</div>
     <div class="collapsible-body">
-      <ul  *ngIf="currentUser?.classes">
-        <li *ngFor="let class of currentUser?.classes"><a (click)="showClass(class.id)">{{class.name}}</a></li>
+      <ul>
+        <li *ngFor="let class of classes"><a (click)="showClass(class.id)">{{class.name}}</a></li>
       </ul>
     </div>
   </li>
@@ -11,7 +11,7 @@
     <div class="collapsible-header"><i class="material-icons"></i>Students</div>
     <div class="collapsible-body">
       <ul *ngIf="currentUser?.students">
-        <li *ngFor="let student of currentUser.students"><a (click)="showStudent(student.id)">{{student.name}}</a></li>
+        <li *ngFor="let student of currentUser?.students"><a (click)="showStudent(student.id)">{{student.name}}</a></li>
       </ul>
     </div>
   </li>
