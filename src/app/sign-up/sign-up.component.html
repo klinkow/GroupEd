@@ -16,6 +16,13 @@
     </label>
   </p>
 
+  <p>
+    <label> User Name:
+        <input type="text" name="userName" (ngModel)="userName" required>
+    </label>
+  </p>
+
+
     <button type="submit" [disabled]="!formData.valid">Submit</button>
     <a routerLink="/">Cancel</a>
 </form>
