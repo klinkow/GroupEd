@@ -11,12 +11,12 @@ import { AuthguardService } from '.././authguard.service';
   providers: [UserService]
 })
 export class DashboardComponent implements OnInit {
-  public currentUser: any = null;
+public currentUser: FirebaseObjectObservable<any>;
   public uid: string;
 
   constructor(private af: AngularFire, private as: AuthguardService, private userService: UserService, private route: ActivatedRoute, private location: Location) {
     this.af.auth.subscribe(user => {
-      this.currentUser = user;
+      console.log(user);
     })
   }
 

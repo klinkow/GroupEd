@@ -5,3 +5,7 @@
 
   <h2>User Name: {{(currentUser | async)?.name}}</h2>
 </div>
+
+<div *ngIf="edit">
+  <newclass [user]="User"></newclass>
+</div>
