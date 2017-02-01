@@ -47,9 +47,7 @@ const firebaseAuthConfig = {
     DashboardComponent,
     SplashComponent,
     NewclassComponent,
-
     SidebarComponent,
-
     NewstudentComponent
   ],
   imports: [
