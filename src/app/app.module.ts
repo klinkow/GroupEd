@@ -51,7 +51,7 @@ const firebaseAuthConfig = {
     DashboardComponent,
     SplashComponent,
 
-    NewclassComponent
+    NewclassComponent,
 
     SidebarComponent
 
