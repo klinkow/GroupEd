@@ -1,4 +1,14 @@
-{ "Ambicade": {
+{ "users": [{
+  "name": "User1" {
+
+  }
+
+
+  }]
+
+
+
+  {
       "classes": {
           "name": "period1",
           "groups": [{

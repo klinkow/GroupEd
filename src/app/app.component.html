@@ -7,15 +7,12 @@
         <li><a routerLink="signup">SignUp</a></li>
       </span>
       <span *ngIf="(af.auth | async)">
-        <li><a routerLink="dashboard">Dashboard</a></li>
+        <li><a (click)="goToDashBoard(currentUser)">Dashboard</a></li>
         <li><a (click)="logout()">Logout</a></li>
       </span>
     </ul>
   </div>
 </nav>
-
-
-<div class="container">
-  <router-outlet></router-outlet>
+<div class="row">
+    <router-outlet></router-outlet>
 </div>
-

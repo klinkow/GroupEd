@@ -1,0 +1,64 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">New Class</h3>
+  </div>
+  <div class="panel-body">
+    <div>
+      <div>
+        <label>Name:</label>
+        <br>
+        <input #newName>
+      </div>
+
+      <div>
+        <label>Subject:</label>
+        <br>
+        <input #newSubject>
+      </div>
+
+      <div>
+        <label>Period:</label>
+        <br>
+        <input #newPeriod>
+      </div>
+      <button (click)="submitForm(newName.value, newSubject.value, newPeriod.value); newName.value=''; newSubject.value=''; newPeriod.value=''">Add</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <h2>New Class</h2>
+<form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="name" type="name" class="validate" (ngModel)="name" required>
+      <label for="name">Name:</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="subject" type="subject" (ngModel)="subject">
+      <label for="subject">Subject:</label>
+    </div>
+  </div>
+
+  <p *ngFor="let student of students">
+    <input type="checkbox" name="studentsInClass" [(ngModel)]="student.selected" id="studentsInClass">
+    <label for="studentsInClass">{{student.name}}</label>
+  </p>
+
+    <button [disabled]="!formData.valid">Submit</button>
+    <a routerLink="/dashboard">Cancel</a>
+</form>
+
+<p *ngFor="let student of fuckingStudents">{{student}}</p> -->

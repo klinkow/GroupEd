@@ -1,1 +1,10 @@
-<h1 class="center well">HEY! You're on the dashboard!</h1>
+
+<sidebar [currentUser]="currentUser" class="col s2"></sidebar>
+
+<div class="col s10">
+  <h1 class="center well">HEY! You're on the dashboard!</h1>
+
+  <h2>User Name: {{currentUser?.name}}</h2>
+</div>
+
+<button type="button" (click)="showNewClassForm()">Add A Class</button>
