@@ -1,13 +1,15 @@
 
 <sidebar [currentUser]="currentUser" class="col s2"></sidebar>
 
-
 <div class="col s10">
   <h1 class="center well">HEY! You're on the dashboard!</h1>
 
   <h2>User Name: {{currentUser?.name}}</h2>
 </div>
 
-<newclass [currentUser]="currentUser"></newclass>
+<button type="button" (click)="showNewClassForm()">Add A Class</button>
+
+<newclass *ngIf="addingClass" [currentUser]="currentUser"></newclass>
 
 <newstudent [currentUser]="currentUser"></newstudent>
+
