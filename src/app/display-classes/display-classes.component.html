@@ -2,7 +2,7 @@
 
   <div class="card-container">
     <div *ngFor= "let smlass of smlasses" class="class-card">
-      <div class="card {{cardColor()}} darken-2">
+      <div class="card blue darken-2">
         <div class="card-content white-text">
           <span class="card-title">{{smlass.name}}</span>
         </div>
@@ -20,6 +20,6 @@
   </div>
 
   <div *ngIf="toggleClassForm">
-    <newclass></newclass>
+    <newclass [currentUser]="currentUser"></newclass>
   </div>
 </div>

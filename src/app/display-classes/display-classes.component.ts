@@ -2,7 +2,7 @@ import { Student } from '../student.model';
 import { Group } from '../group.model';
 import { Class } from '../class.model';
 import { UserService } from '../user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
@@ -13,6 +13,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
   providers: [UserService]
 })
 export class DisplayClassesComponent implements OnInit {
+  @Input() currentUser;
   classes: FirebaseListObservable<any[]>;
   public toggleClassForm: boolean = false;
   constructor(private router: Router, private angularFire: AngularFire) {
@@ -40,15 +41,15 @@ export class DisplayClassesComponent implements OnInit {
     console.log(this.toggleClassForm)
   }
 
-cardColor() {
-  var colors = ["blue","red","orange","yellow","purple","green"];
-  return colors[Math.floor(Math.random()*colors.length)];
-}
+// cardColor() {
+//   var colors = ["blue","red","orange","yellow","purple","green"];
+//   return colors[Math.floor(Math.random()*colors.length)];
+// }
 
 smlasses : Class[] = [
-new Class("Class 1", [], [], "Math", 3, 5),
-new Class("Class 2", [], [], "Math", 3, 5),
-new Class("Class 3", [], [], "Math", 3, 5),
-new Class("Class 4", [], [], "Math", 3, 4)
+new Class("Class 1", "math"),
+new Class("Class 2", "math"),
+new Class("Class 3", "math"),
+new Class("Class 4", "math")
 ]
 }
