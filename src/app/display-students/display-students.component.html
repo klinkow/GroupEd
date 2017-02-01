@@ -1,10 +1,11 @@
 <div class="container">
 
   <div class="card-container">
-    <div *ngFor= "let smlass of smlasses" class="class-card">
+
+    <div *ngFor= "let student of students" class="student-card">
       <div class="card existingcard">
         <div class="card-content white-text">
-          <span class="card-title">{{smlass.name}}</span>
+          <span class="card-title">{{student}}</span>
         </div>
       </div>
     </div>
@@ -12,8 +13,8 @@
     <div (click)="toggleClass()" class="class-card">
       <img src="img/add.png" class="addbutton">
     </div>
-    
   </div>
+
 
   <div *ngIf="toggleClassForm">
     <newclass></newclass>

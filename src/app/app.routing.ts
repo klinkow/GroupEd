@@ -1,6 +1,7 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DisplayClassesComponent } from './display-classes/display-classes.component';
+import { DisplayStudentsComponent } from './display-students/display-students.component';
 import { SplashComponent } from './splash/splash.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -23,6 +24,10 @@ const appRoutes: Routes = [
   {
     path: 'display-classes',
     component: DisplayClassesComponent
+  },
+  {
+    path: 'display-students',
+    component: DisplayStudentsComponent
   },
   {
     path: 'login',
