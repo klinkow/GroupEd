@@ -25,7 +25,7 @@ export class SignUpComponent{
           userName: formData.value.userName,
           email: formData.value.email
         });
-        this.router.navigate(['/dashboard/' + success.auth.uid]);
+        this.router.navigate(['/dashboard']);
       }).catch(
         (err) => {
         console.log(err);
