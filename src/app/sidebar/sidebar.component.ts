@@ -10,7 +10,7 @@ import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 
 export class SidebarComponent implements OnInit {
   @Input() currentUser;
-  constructor(private af: AngularFire, ) { }
+  constructor(private af: AngularFire) { }
 
   ngOnInit() {
   }
