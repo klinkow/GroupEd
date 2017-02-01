@@ -1,18 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 'angularfire2';
+import { AuthguardService } from '.././authguard.service';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit {
-  users: FirebaseListObservable<any[]>;
+export class SignUpComponent{
 
-  constructor(private af: AngularFire, private router: Router) {
-    this.users = af.database.list('users');
-  }
+  constructor(private af: AngularFire, private router: Router, private authService: AuthguardService) { }
 
   onSubmit(formData) {
     if(formData.valid) {
@@ -22,21 +20,16 @@ export class SignUpComponent implements OnInit {
         password: formData.value.password
       }).then(
         (success) => {
-        console.log(success);
         this.af.database.list('users').update(success.auth.uid, {
           name: formData.value.name,
-          email: formData.value.name
+          email: formData.value.email
         });
-        this.router.navigate(['/dashboard'])
+        this.router.navigate(['/dashboard/' + success.auth.uid]);
       }).catch(
         (err) => {
         console.log(err);
-        this.router.navigate(['/login']);
-      })
+        this.router.navigate(['/signup']);
+      });
     }
   }
-
-  ngOnInit() {
-  }
-
 }
