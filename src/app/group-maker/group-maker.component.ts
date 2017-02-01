@@ -24,19 +24,15 @@ export class GroupMakerComponent implements OnInit {
             });
         })
     this.ploodents = angularFire.database.list('students');
-
-
-
   }
-  ngOnInit() {
 
+  ngOnInit() {
   }
 
   runFunctionClick : boolean = false;
 
   runFunction() {
     console.log(this.students);
-    this.groupHeterogeneously(this.students);
   }
 
   show() {
@@ -47,26 +43,30 @@ export class GroupMakerComponent implements OnInit {
     return this.ploodents;
   }
 
-  // subject: string;
   numberOfGroups : number;
   numberOfStudents : number = this.students.length;
+  scoreType: string;
 
-  submitHeterogeneously(subject: string, numberOfGroups: number) {
-    //if subject === "math", student.mathScore
-    //if subject === "reading", look at student.readingScore
-    //if subject === "treehouse", look at student.treehouseScore
-
+  submitHeterogeneously(scoreType, numberOfGroups) {
+    console.log(this.students, scoreType, parseInt(numberOfGroups));
+    this.groupHeterogeneously(this.students, scoreType, parseInt(numberOfGroups));
+    console.log(this.groupHeterogeneously(this.students, scoreType, parseInt(numberOfGroups)));
   }
-  submitHomogenously(subject: string, numberOfGroups: number) {
 
+  submitHomogenously(scoreType, numberOfGroups) {
+    console.log(this.students, scoreType, parseInt(numberOfGroups));
+    this.groupHomogeneously(this.students, scoreType, parseInt(numberOfGroups));
     // implement the input data to function;
   }
-  submitHomogenouslyPlusStar(subject: string, numberOfGroups: number) {
-
+  submitHomogenouslyPlusStar(scoreType, numberOfGroups) {
+    console.log(this.students, scoreType, parseInt(numberOfGroups));
+    this.groupHomogeneouslyPlusStar(this.students, scoreType, parseInt(numberOfGroups));
     // implement the input data to function;
   }
 
-  randomizeStudents(students) {
+
+
+  sortDescending(students, scoreType, numberOfGroups) {
 
     var currentIndex : number = students.length
     var temporaryValue : Student;
@@ -80,17 +80,12 @@ export class GroupMakerComponent implements OnInit {
       students[currentIndex] = students[randomIndex];
       students[randomIndex] = temporaryValue;
     }
-    return students;
-  }
 
-
-  sortDescending(students) {
     var studentsSorted : Student[] = [];
 
     for (var i = 5; i > -1; i--) {
       students.forEach((student) => {
-        //gotta change number to mathScore/readingScore/treehouseScore
-        if (student.number === i) {
+        if (student.scoreType === i) {
           studentsSorted.push(student);
         };
       });
@@ -143,11 +138,11 @@ export class GroupMakerComponent implements OnInit {
       };
       students.splice(0, this.numberOfGroups);
     };
-    groups.forEach((group) => {
-      console.log("GROUPS HETEROGENEOUS");
-      console.log(group.name);
-      console.log(group.students);
-    });
+    // groups.forEach((group) => {
+    //   console.log("GROUPS HETEROGENEOUS");
+    //   console.log(group.name);
+    //   console.log(group.students);
+    // });
     return groups;
   }
 
@@ -185,24 +180,25 @@ export class GroupMakerComponent implements OnInit {
       };
       students.splice(0, (this.numberOfStudents/this.numberOfGroups)-1);
     };
-    groups.forEach((group) => {
-      console.log("GROUPS STAR");
-      console.log(group.name);
-      console.log(group.students);
-    });
+    // groups.forEach((group) => {
+    //   console.log("GROUPS STAR");
+    //   console.log(group.name);
+    //   console.log(group.students);
+    // });
     return groups;
   }
 
 
-  groupHeterogeneously(students) {
-    this.makeGroupsHetero(this.snakeStudents(this.sortDescending(this.randomizeStudents(students))));
+  groupHeterogeneously(students, scoreType, numberOfGroups) {
+    this.makeGroupsHetero(this.snakeStudents(this.sortDescending(students, scoreType, numberOfGroups)));
   }
 
-  groupHomogeneously(students) {
-    this.makeGroupsHomogenous(this.sortDescending(this.randomizeStudents(students)));
+  groupHomogeneously(students, scoreType, numberOfGroups) {
+    this.makeGroupsHomogenous(this.sortDescending(students, scoreType, numberOfGroups));
   }
 
-  groupHomogenouslyPlusStar(students) {
-    this.makeGroupsHomogenouslyPlusStar(this.sortDescending(this.randomizeStudents(students)));
+  groupHomogeneouslyPlusStar(students, scoreType, numberOfGroups) {
+    this.makeGroupsHomogenouslyPlusStar(this.sortDescending(students, scoreType, numberOfGroups));
   }
+
 }
