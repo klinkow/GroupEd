@@ -193,6 +193,62 @@ export class GroupMakerComponent implements OnInit {
     return groups;
   }
 
+  makeToScale(students, scoreToScale) {
+
+    var breakPoint : number = (students.length)/5;
+
+    var section4 = [];
+    var section3 = [];
+    var section2 = [];
+    var section1 = [];
+    var section0 = [];
+
+    for (var i = 0; i < breakPoint; i++) {
+      section4.push(students[i]);
+      section3.push(students[i+breakPoint]);
+      section2.push(students[i+2*breakPoint]);
+      section1.push(students[i+3*breakPoint]);
+      section0.push(students[i+4*breakPoint]);
+    };
+
+
+    for (var j = 0; j < 5; j++) {
+      section4[j].scoreToScale = 4;
+    };
+    for (var l = 0; l < 5; l++) {
+      section3[l].scoreToScale = 3;
+    };
+    for (var l = 0; l < 5; l++) {
+      section2[l].scoreToScale = 2;
+    };
+    for (var l = 0; l < 5; l++) {
+      section1[l].scoreToScale = 1;
+    };
+    for (var l = 0; l < 5; l++) {
+      section0[l].scoreToScale = 0;
+    };
+
+    var studentsToScale = [];
+
+    for (var k = 0; k < breakPoint; k++) {
+      studentsToScale.push(section4[k]);
+    };
+    for (var k = 0; k < breakPoint; k++) {
+      studentsToScale.push(section3[k]);
+    };
+    for (var k = 0; k < breakPoint; k++) {
+      studentsToScale.push(section2[k]);
+    };
+    for (var k = 0; k < breakPoint; k++) {
+      studentsToScale.push(section1[k]);
+    };
+    for (var k = 0; k < breakPoint; k++) {
+      studentsToScale.push(section0[k]);
+    };
+
+    return studentsToScale;
+  }
+
 
   groupHeterogeneously(students) {
     this.makeGroupsHetero(this.snakeStudents(this.sortDescending(this.randomizeStudents(students))));
@@ -204,5 +260,17 @@ export class GroupMakerComponent implements OnInit {
 
   groupHomogenouslyPlusStar(students) {
     this.makeGroupsHomogenouslyPlusStar(this.sortDescending(this.randomizeStudents(students)));
+  }
+
+  groupHeterogeneouslyWeirdScale(students) {
+    this.makeGroupsHetero(this.snakeStudents(this.makeToScale(this.sortDescending(students), scoreToScale)));
+  }
+
+  groupHomogeneouslyWeirdScale(students) {
+    this.makeGroupsHomogenous(this.makeToScale(this.sortDescending(students), scoreToScale));
+  }
+
+  groupHomogenouslyWeirdScalePlusStar(students) {
+    this.makeGroupsHomogenouslyPlusStar(this.makeToScale(this.sortDescending(students), scoreToScale));
   }
 }
