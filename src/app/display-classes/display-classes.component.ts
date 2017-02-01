@@ -14,12 +14,15 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 })
 export class DisplayClassesComponent implements OnInit {
   classes: FirebaseListObservable<any[]>;
-  constructor(private router: Router, private userService: UserService) {
-    // this.students = angularFire.database.list('students');
-  }
-  ngOnInit() {
-    this.classes = this.userService.getClasses();
-  }
+  constructor(private router: Router, private angularFire: AngularFire) {
+    this.angularFire.database.list('/users', { preserveSnapshot: true})
+        .subscribe(snapshots=>{
+            snapshots.forEach(snapshot => {
+              this.classes.push(snapshot.val());
+            });
+        })
+    this.classes = angularFire.database.list('users');  }
+  ngOnInit() { }
 
   // getStudents(){
   //   return this.students;

@@ -1,4 +1,4 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component } from '@angular/core';
 import { Student } from '../student.model';
 import { Group } from '../group.model';
 import { Class } from '../class.model';
@@ -13,7 +13,7 @@ import { Observable } from 'rxjs/Rx';
 
 
 
-export class GroupMakerComponent implements OnInit {
+export class GroupMakerComponent {
   students: Student[] = [];
   ploodents: FirebaseListObservable<any[]>;
   constructor(private angularFire: AngularFire) {
@@ -197,5 +197,7 @@ export class GroupMakerComponent implements OnInit {
   groupHomogeneouslyPlusStar(students, scoreType, numberOfGroups) {
     this.makeGroupsHomogenouslyPlusStar(this.sortDescending(students, scoreType, numberOfGroups));
   }
+
+
 
 }

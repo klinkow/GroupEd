@@ -15,4 +15,8 @@ export class AppComponent {
     this.af.auth.logout();
     this.router.navigate(['/'])
   }
+
+  goToDashBoard(user) {
+   this.router.navigate(['dashboard', user.uid]);
+ }
 }

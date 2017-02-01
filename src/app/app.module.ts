@@ -16,9 +16,10 @@ import { AngularFireModule, AuthProviders, AuthMethods, FIREBASE_PROVIDERS, Angu
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AuthguardService } from './authguard.service';
 import { SplashComponent } from './splash/splash.component';
-
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { AuthguardService } from './authguard.service';
+import { UserService } from './user.service';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -43,7 +44,8 @@ const firebaseAuthConfig = {
     LoginComponent,
     SignUpComponent,
     DashboardComponent,
-    SplashComponent
+    SplashComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ const firebaseAuthConfig = {
     routing,
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
   ],
-  providers: [AuthguardService],
+  providers: [AuthguardService,
+              UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
