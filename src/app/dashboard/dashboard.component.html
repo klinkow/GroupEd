@@ -1,10 +1,16 @@
 
+<<<<<<< HEAD
 <sidebar class="col s2 sidebar"></sidebar>
+=======
+<sidebar [currentUser]="currentUser" class="col s2"></sidebar>
+
+>>>>>>> 9b3335c04d0199e1e13108288be2825cd59881a4
 
 <div class="container">
   <div class="col s10">
     <h1 class="center well">HEY! You're on the dashboard!</h1>
 
+<<<<<<< HEAD
     <h2>User Name: {{(currentUser | async)?.name}}</h2>
 
     <app-display-classes></app-display-classes>
@@ -14,3 +20,11 @@
     <newclass></newclass>
   </div>
 </div>
+=======
+  <h2>User Name: {{currentUser?.name}}</h2>
+</div>
+
+<newclass [currentUser]="currentUser"></newclass>
+
+<newstudent [currentUser]="currentUser"></newstudent>
+>>>>>>> 9b3335c04d0199e1e13108288be2825cd59881a4
