@@ -11,11 +11,12 @@ export class NewclassComponent implements OnInit {
   newClass: Class;
   students = [{name: "sally"}, {name: "harry"}, {name:"bill"}];
 
+
   constructor() { }
 
   submitForm(name: string, subject: string, period: number) {
   var newClass: Class = new Class(name, [], [], subject, 0, period);
-  // this.user.classes = newClass;
+  // this.user.classes.push(newClass);
 }
 
 
