@@ -18,7 +18,6 @@ export class DashboardComponent implements OnInit {
 
   constructor(private af: AngularFire, private as: AuthguardService, private userService: UserService) {
     this.af.auth.subscribe(user => {
-      console.log(user.uid);
       this.uid = user.uid;
     })
 
@@ -28,7 +27,6 @@ export class DashboardComponent implements OnInit {
 
     this.af.database.list('/users/' + this.uid + '/classes').subscribe(lastData => {
       this.classes = lastData;
-      console.log(this.classes);
     })
   }
 

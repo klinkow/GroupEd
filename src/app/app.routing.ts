@@ -13,11 +13,6 @@ import { GroupMakerComponent } from './group-maker/group-maker.component'
 const appRoutes: Routes = [
 
   {
-    path: 'groupmaker',
-    component: GroupMakerComponent
-  },
-
-  {
     path: '',
     component: SplashComponent
   },
