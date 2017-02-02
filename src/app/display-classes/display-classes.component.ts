@@ -47,9 +47,10 @@ export class DisplayClassesComponent implements OnInit {
 // }
 
 smlasses : Class[] = [
-new Class("Class 1", "math"),
-new Class("Class 2", "math"),
-new Class("Class 3", "math"),
-new Class("Class 4", "math")
+new Class("Class 1", "Math"),
+new Class("Class 2", "Math"),
+new Class("Class 3", "Math"),
+new Class("Class 4", "Math")
+
 ]
 }
