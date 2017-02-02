@@ -45,7 +45,7 @@ select:-webkit-autofill:focus {
 
 //navbar
 nav, .nav-wrapper {
-  height: 80px;
+  height: 110px;
   background: darken(rgb(255, 165, 80), 10%);
 }
 nav .brand-logo {
@@ -57,7 +57,7 @@ nav .brand-logo {
   width: 0;
   line-height: 1.7em;
   height: 1.5em;
-  margin-top: -5px;
+  margin-top: 10px;
   transition: all .5s;
   color: #26a69a;
   &:visited, &:active, &:focus {
@@ -72,7 +72,7 @@ nav .brand-logo {
 
 nav .right li a {
   font-size: 1.2em;
-  margin-top: 5px;
+  margin-top: 20px;
   margin-right: 25px;
   transition: all .5s;
   &:hover, &:active, &:focus {
