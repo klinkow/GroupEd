@@ -13,80 +13,37 @@ import { UserService } from '.././user.service';
   providers: [UserService]
 })
 
-
-
 export class GroupMakerComponent {
-  @Input() currentUser;
-  @Input() classes;
-  students: Student[] = [];
-  public uid: string;
+  @Input() selectedClass;
+  students : Student[];
+  numberOfGroups: number;
+  numberOfStudents : number;
 
-  constructor(private af: AngularFire, private userService: UserService) {
-    // this.af.database.list('/students', { preserveSnapshot: true})
-    //     .subscribe(snapshots=>{
-    //         snapshots.forEach(snapshot => {
-    //           this.students.push(snapshot.val());
-    //         });
-    //     })
-
-
-
-    this.af.auth.subscribe(user => {
-      this.uid = user.uid;
-    })
-
-    this.userService.getUser(this.uid).subscribe(lastData => {
-      this.currentUser = lastData;
-      console.log(this.currentUser);
-    });
-
-    this.af.database.list('/users/' + this.uid + '/classes').subscribe(lastData => {
-      this.classes = lastData;
-      console.log(this.classes)
-    })
-      // console.log("Casdfadsf:");
-      // console.log(this.classes[0].students);
-      // var dataIn = this.classes[0].students;
-      // this.getStudentsFromUser(dataIn);
-
-  }
+  constructor(private af: AngularFire, private userService: UserService) { }
 
   ngOnInit() {
-  }
-
-  // getStudentsFromUser(thing) {
-  //   console.log(thing);
-  //   var pludents = [];
-  //   thing.forEach((student) => {
-  //     pludents.push(student);
-  //     console.log(pludents);
-  //   });
-  //   debugger;
-  //   console.log(pludents);
-  //   };
-
-
-  numberOfGroups : number;
-  numberOfStudents : number = this.students.length;
-  scoreType: string;
-
-  submitHeterogeneously(scoreType, numberOfGroups) {
-    console.log(this.students, scoreType, parseInt(numberOfGroups));
-    this.groupHeterogeneously(this.students, scoreType, parseInt(numberOfGroups));
-  }
-
-  submitHomogeneously(scoreType, numberOfGroups) {
-    console.log(this.students, scoreType, parseInt(numberOfGroups));
-    this.groupHomogeneously(this.students, scoreType, parseInt(numberOfGroups));
-    // implement the input data to function;
-  }
-  submitHomogenouslyPlusStar(scoreType, numberOfGroups) {
-    console.log(this.students, scoreType, parseInt(numberOfGroups));
-    this.groupHomogeneouslyPlusStar(this.students, scoreType, parseInt(numberOfGroups));
-    // implement the input data to function;
+    this.numberOfStudents = this.selectedClass.students.length;
+    console.log(this.numberOfStudents)
   }
 
 
+
+
+  // submitHeterogeneously(scoreType, numberOfGroups) {
+  //   console.log(this.students, scoreType, parseInt(numberOfGroups));
+  //   this.groupHeterogeneously(this.students, scoreType, parseInt(numberOfGroups));
+  // }
+
+  // submitHomogeneously(scoreType, numberOfGroups) {
+  //   console.log(this.students, scoreType, parseInt(numberOfGroups));
+  //   this.groupHomogeneously(this.students, scoreType, parseInt(numberOfGroups));
+  //   // implement the input data to function;
+  // }
+  // submitHomogenouslyPlusStar(scoreType, numberOfGroups) {
+  //   console.log(this.students, scoreType, parseInt(numberOfGroups));
+  //   this.groupHomogeneouslyPlusStar(this.students, scoreType, parseInt(numberOfGroups));
+  //   // implement the input data to function;
+  // }
 
   sortDescending(students, scoreType, numberOfGroups) {
 
@@ -112,9 +69,9 @@ export class GroupMakerComponent {
         };
       });
     };
+    this.numberOfGroups = numberOfGroups;
     return studentsSorted;
   }
-
 
   snakeStudents(students) {
     var studentsSnaked : Student[] = [];
@@ -143,7 +100,6 @@ export class GroupMakerComponent {
     };
     return studentsSnaked;
   }
-
 
   makeGroupsHetero(students) {
     var groups : Group[] = [];
@@ -265,16 +221,17 @@ export class GroupMakerComponent {
   }
 
 
-  groupHeterogeneously(students, scoreType, numberOfGroups) {
-    this.makeGroupsHetero(this.snakeStudents(this.sortDescending(students, scoreType, numberOfGroups)));
+  groupHeterogeneously(scoreType, numberOfGroups) {
+    console.log(this.selectedClass)
+    this.makeGroupsHetero(this.snakeStudents(this.sortDescending(this.students, scoreType, numberOfGroups)));
   }
 
-  groupHomogeneously(students, scoreType, numberOfGroups) {
-    this.makeGroupsHomogenous(this.sortDescending(students, scoreType, numberOfGroups));
+  groupHomogeneously(scoreType, numberOfGroups) {
+    this.makeGroupsHomogenous(this.sortDescending(this.students, scoreType, numberOfGroups));
   }
 
-  groupHomogeneouslyPlusStar(students, scoreType, numberOfGroups) {
-    this.makeGroupsHomogenouslyPlusStar(this.sortDescending(students, scoreType, numberOfGroups));
+  groupHomogeneouslyPlusStar(scoreType, numberOfGroups) {
+    this.makeGroupsHomogenouslyPlusStar(this.sortDescending(this.students, scoreType, numberOfGroups));
   }
 
   // groupHeterogeneouslyWeirdScale(students, scoreToScale) {

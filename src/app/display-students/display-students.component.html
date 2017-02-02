@@ -2,13 +2,14 @@
 
   <div class="card-container">
 
-    <div *ngFor= "let student of students" class="student-card">
+    <div *ngFor= "let student of selectedClass.students" class="student-card">
       <div class="card existingcard">
         <div class="card-content white-text">
-          <span class="card-title">{{student}}</span>
+          <span class="card-title">{{student.name}}</span>
         </div>
       </div>
     </div>
+<<<<<<< HEAD
   </div>
 
 
@@ -16,4 +17,12 @@
   <div *ngIf="toggleClassForm">
     <newclass></newclass>
   </div>
+=======
+
+  </div>
+  <div class="add-card" (click)="showGroupMaker()">
+    <img src="img/add.png" class="addbutton">
+  </div>
+  <app-group-maker *ngIf="displayGroupMaker" [selectedClass]="selectedClass"></app-group-maker>
+>>>>>>> devin
 </div>
