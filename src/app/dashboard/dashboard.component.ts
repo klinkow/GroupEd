@@ -11,7 +11,7 @@ import { AuthguardService } from '.././authguard.service';
 })
 
 export class DashboardComponent implements OnInit {
-  public currentUser;
+  @Output() currentUser;
   @Output() classes;
   public uid: string;
   public addingClass: boolean = false;
@@ -36,5 +36,6 @@ export class DashboardComponent implements OnInit {
 
   showNewClassForm() {
     this.addingClass = !this.addingClass;
+    console.log(this.addingClass)
   }
 }

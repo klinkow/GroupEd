@@ -2,7 +2,7 @@ import { Student } from '../student.model';
 import { Group } from '../group.model';
 import { Class } from '../class.model';
 import { UserService } from '../user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
@@ -13,6 +13,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
   providers: [UserService]
 })
 export class DisplayClassesComponent implements OnInit {
+  @Input() currentUser;
   classes: FirebaseListObservable<any[]>;
   public toggleClassForm: boolean = false;
   constructor(private router: Router, private angularFire: AngularFire) {
@@ -50,5 +51,6 @@ new Class("Class 1", "Math"),
 new Class("Class 2", "Math"),
 new Class("Class 3", "Math"),
 new Class("Class 4", "Math")
+
 ]
 }
