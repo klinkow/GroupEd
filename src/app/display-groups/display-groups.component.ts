@@ -11,5 +11,9 @@ export class DisplayGroupsComponent implements OnInit {
 
   ngOnInit() {
   }
+  students = [
+    "Harry", "Ron", "Hermione", "Malfoy"
+  ]
+
 
 }

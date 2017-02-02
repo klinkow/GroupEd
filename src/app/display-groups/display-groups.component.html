@@ -1,3 +1,27 @@
-<div (click)="toggleClass()" class="add-card">
-  <img src="img/add.png" class="addbutton">
+<div class="container">
+
+  <div class="card-container">
+    <!-- change ngFor info to grab group instead of student -->
+    <div *ngFor= "let student of students" class="group-card">
+      <div class="card existingcard">
+        <div class="card-content  white-text">
+          <!-- change {{student}} to group.number -->
+        <span class="card-title">{{student}}</span>
+        <div class="content">
+          <ul>
+            <!-- change {{student}} to group.student -->
+            <li>{{student}}</li>
+          </ul>
+        </div>
+       </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div (click)="toggleClass()" class="add-card">
+    <img src="img/add.png" class="addbutton">
+  </div>
+  <app-group-maker [currentUser]="currentUser"></app-group-maker>
+
 </div>

@@ -2,17 +2,9 @@
 
 <sidebar [currentUser]="currentUser" [classes]="classes" class="col s2 sidebar"></sidebar>
 
-  <div class="col s10">
- <app-display-classes></app-display-classes>
- <-- <app-display-students></app-display-students> -->
-
-  </div>
-<!-- </div> -->
-
-<!-- <button type="button" (click)="showNewClassForm()">Add A Class</button>
-<newclass *ngIf="addingClass" [currentUser]="currentUser"></newclass>
-<<<<<<< HEAD
-<newstudent [currentUser]="currentUser"></newstudent>
-<h2>User Name: {{currentUser?.name}}</h2> -->
-
-<app-group-maker [currentUser]="currentUser"></app-group-maker>
+<div class="col s10">
+  <app-display-classes></app-display-classes>
+  <app-display-students></app-display-students>
+  <!-- remove display-groups from this component and link it to each class card -->
+  <app-display-groups></app-display-groups>
+</div>
