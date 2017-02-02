@@ -17,13 +17,13 @@ export class DisplayClassesComponent implements OnInit {
   @Input() classes;
   public selectedClass = null;
   public toggleClassForm: boolean = false;
-  public hidden = true;
+  // public hidden = true;
   constructor(private router: Router, private af: AngularFire) {}
 
   ngOnInit() { }
 
   showClass(clickedClass) {
-    this.af.database.list('/users/' + this.currentUser.$key + '/classes/' + clickedClass.$key + '/students').subscribe(lastData => {
+    this.af.database.list('/users/' + this.currentUser.$key + '/classes/' + clickedClass.$key + '/groups').subscribe(lastData => {
       clickedClass.students = lastData;
       this.selectedClass = clickedClass;
       console.log(clickedClass);
@@ -35,8 +35,8 @@ export class DisplayClassesComponent implements OnInit {
     console.log(this.toggleClassForm)
   }
 
-  deleteClass() {
-    this.hidden = false;
-    // console.log(this.toggleClassForm)
-  }
+  // deleteClass() {
+  //   this.hidden = false;
+  //   // console.log(this.toggleClassForm)
+  // }
 }
