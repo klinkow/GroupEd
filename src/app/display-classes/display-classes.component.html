@@ -1,10 +1,14 @@
 <div class="container display-container">
+  <h1 class="page-title">My Classes</h1>
 
   <div class="card-container">
     <div *ngFor= "let class of classes" class="class-card" (click)="showClass(class)">
       <div class="card existingcard">
         <div class="card-content white-text">
           <span class="card-title">{{class.name}}</span>
+        </div>
+        <div class="delete">
+          <img src="img/add.png">
         </div>
       </div>
     </div>
