@@ -41,10 +41,6 @@ export class DisplayClassesComponent implements OnInit {
     console.log(this.toggleClassForm)
   }
 
-// cardColor() {
-//   var colors = ["blue","red","orange","yellow","purple","green"];
-//   return colors[Math.floor(Math.random()*colors.length)];
-// }
 
 smlasses : Class[] = [
 new Class("Class 1", "Math"),
