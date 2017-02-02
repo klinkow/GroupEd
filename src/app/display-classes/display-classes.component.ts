@@ -14,39 +14,24 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 })
 export class DisplayClassesComponent implements OnInit {
   @Input() currentUser;
-  classes: FirebaseListObservable<any[]>;
+  @Input() classes;
+  public selectedClass = null;
   public toggleClassForm: boolean = false;
-  constructor(private router: Router, private angularFire: AngularFire) {
-    // this.angularFire.database.list('/users', { preserveSnapshot: true})
-    //     .subscribe(snapshots=>{
-    //         snapshots.forEach(snapshot => {
-    //           this.classes.push(snapshot.val());
-    //         });
-    //     })
-    // this.classes = angularFire.database.list('users');
-  }
+  constructor(private router: Router, private af: AngularFire) {}
+
   ngOnInit() { }
 
-  // getStudents(){
-  //   return this.students;
-  // }
-  //
-  // goToDetailPage(clickedStudent) {
-  //   this.router.nativate('students', clickedStudent.$key);
-  // }
-
+  showClass(clickedClass) {
+    this.af.database.list('/users/' + this.currentUser.$key + '/classes/' + clickedClass.$key + '/students').subscribe(lastData => {
+      clickedClass.students = lastData;
+      this.selectedClass = clickedClass;
+      console.log(clickedClass);
+    })
+  }
 
   toggleClass() {
     this.toggleClassForm = !this.toggleClassForm;
     console.log(this.toggleClassForm)
   }
 
-
-smlasses : Class[] = [
-new Class("Class 1", "Math"),
-new Class("Class 2", "Math"),
-new Class("Class 3", "Math"),
-new Class("Class 4", "Math")
-
-]
 }

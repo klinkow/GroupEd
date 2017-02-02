@@ -11,6 +11,9 @@
       <div class="classinput">
         <input placeholder="Subject" #newSubject>
       </div>
+      <ul>
+        <li *ngFor="let student of students">{{student.name}}</li>
+      </ul>
       <newstudent (newStudentSender)="addStudent($event)"></newstudent>
       <button class="btn" (click)="submitForm(newName.value, newSubject.value); newName.value=''; newSubject.value=''">Add Class</button>
     </div>

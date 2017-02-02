@@ -2,10 +2,10 @@
   <h1 class="page-title">My Classes</h1>
 
   <div class="card-container">
-    <div *ngFor= "let smlass of smlasses" class="class-card">
+    <div *ngFor= "let class of classes" class="class-card" (click)="showClass(class)">
       <div class="card existingcard">
         <div class="card-content white-text">
-          <span class="card-title">{{smlass.name}}</span>
+          <span class="card-title">{{class.name}}</span>
         </div>
         <div class="delete">
           <img src="img/add.png">
@@ -21,6 +21,9 @@
   </div>
 
   <div *ngIf="toggleClassForm">
-    <newclass [currentUser]="currentUser"></newclass>
+    <newclass [currentUser]="currentUser" (formSubmitSender)="toggleClass()"></newclass>
   </div>
+
+  <app-display-students *ngIf="selectedClass" [selectedClass]="selectedClass"></app-display-students>
+
 </div>

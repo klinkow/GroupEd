@@ -1,5 +1,5 @@
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Class } from '../class.model';
 import { Student } from '../student.model';
 import { AngularFire } from 'angularfire2';
@@ -13,6 +13,7 @@ import { AngularFire } from 'angularfire2';
 })
 export class NewclassComponent {
   @Input() currentUser;
+  @Output() formSubmitSender = new EventEmitter();
   newClass: Class;
   students: Student[] = [];
 
@@ -30,6 +31,7 @@ export class NewclassComponent {
       })
 
     });
+    this.formSubmitSender.emit()
   }
 
   addStudent(student: Student) {
