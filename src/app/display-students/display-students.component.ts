@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-display-students',
@@ -6,14 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./display-students.component.css']
 })
 export class DisplayStudentsComponent implements OnInit {
+  @Input() selectedClass;
+  public classToGroup;
+  public displayGroupMaker: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  students = [
-    "Harry", "Ron", "Hermione", "Malfoy"
-  ]
-
+  showGroupMaker() {
+    this.displayGroupMaker = true;
+  }
 }

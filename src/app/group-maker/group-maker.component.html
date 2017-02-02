@@ -7,7 +7,7 @@
       <option value='readingScore'>English</option>
     </select>
     <input #newNumberOfGroup placeholder="Number of Groups">
-    <button (click)="submitHeterogeneously(newScoreType.value, newNumberOfGroup.value); newScoreType.value=''; newNumberOfGroup.value='';">Heterogeneous Group</button>
+    <button (click)="groupHeterogeneously(newScoreType.value, newNumberOfGroup.value); newScoreType.value=''; newNumberOfGroup.value='';">Heterogeneous Group</button>
     <button (click)="submitHomogeneously(newScoreType.value, newNumberOfGroup.value); newScoreType.value=''; newNumberOfGroup.value='';">Homogeneous Group</button>
     <button (click)="submitHomogeneouslyPlusStar(newScoreType.value, newNumberOfGroup.value); newScoreType.value=''; newNumberOfGroup.value=''">Homogeneous Group with a Star Student</button>
   </form>

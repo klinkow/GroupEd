@@ -4,9 +4,6 @@
 
   <div class="col s10">
  <app-display-classes [currentUser]="currentUser" [classes]="classes"></app-display-classes>
- <app-display-students></app-display-students>
-
-<newclass *ngIf="addingClass" [currentUser]="currentUser"></newclass>
 </div>
 <!-- </div> -->
 
@@ -14,5 +11,3 @@
 <newclass *ngIf="addingClass" [currentUser]="currentUser"></newclass>
 <newstudent [currentUser]="currentUser"></newstudent>
 <h2>User Name: {{currentUser?.name}}</h2> -->
-
-<app-group-maker [currentUser]="currentUser"></app-group-maker>
