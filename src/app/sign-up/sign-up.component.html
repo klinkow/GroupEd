@@ -1,4 +1,6 @@
-<div class="container">
+<div class="signup">
+  <div class="signbox">
+    <h2>Sign Up</h2>
   <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
     <p>
       <label> Name:
@@ -23,12 +25,12 @@
     </p>
 
 
-      <button type="submit" [disabled]="!formData.valid">Submit</button>
+      <button class="btn" type="submit" [disabled]="!formData.valid">Submit</button>
       <a routerLink="/">Cancel</a>
   </form>
 
   <div *ngFor="let user of users | async">
     <p>{{user.name}}</p>
   </div>
-
-</div><h2>Sign Up!</h2>
+</div>
+</div>
