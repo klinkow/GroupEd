@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
 //display-groups
-//groupmaker (displaygroup: generate group button-> show group maker)
 //newstudent(inside newclass)
 //student-detail
 
@@ -152,7 +151,9 @@ nav .right li a {
 }
 
 //sidebar
-
+.sidbar, .row .col.2s {
+  width: 250px
+}
 .absolute-sidebar {
   background: darken(rgb(255, 165, 80), 10%);
   width: 250px;
@@ -186,7 +187,8 @@ nav .right li a {
 }
 
 //display-class, display-students
-.row .col.10s {
+.row .col.s10 {
+  margin-left: 250px;
   min-height: calc(100vh - 120px);
 }
 
@@ -197,10 +199,7 @@ nav .right li a {
   justify-content: space-between;
 }
 
-.class-card, .student-card {
-  // @media screen and (max-width: 1550px) {
-  //   width: 100px;
-  // }
+.class-card, .student-card, .group-card {
   flex-basis: 31%;
   margin-top: 20px;
   margin-bottom: bottom;
@@ -228,6 +227,7 @@ nav .right li a {
 .add-card {
   margin-top: 30px;
   margin-left: 30px;
+  margin-bottom: 30px;
   width: 70px;
   height: 70px;
   border-radius: 100%;
@@ -244,6 +244,34 @@ nav .right li a {
   }
 }
 
+.group-card {
+  .card-content .card-title {
+    padding-bottom: 20px;
+    border-bottom: 3px solid white;
+  }
+  &:hover {
+    .card-content .card-title {
+      border-bottom: 3px solid #26a69a;
+    }
+  }
+  .content {
+    padding-top: 10px;
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+  }
+  li {
+    margin-bottom: 12px;
+    flex-basis: 50%;
+    font-size: 1.1em;
+    &:hover {
+      color: lighten(#26a69a, 40%);
+    }
+  }
+}
+
 //newclass form, newstudent form, group maker form
 .panel {
   background: rgba(white, 0.2);
@@ -255,14 +283,13 @@ nav .right li a {
     padding: 2px 10px;
     color: darken(white, 60%);
     &:hover, &:focus, &:active {
-      background: #26a69a;;
+      background: #26a69a;
       color: white;
     }
   }
 }
 
 .newclassform {
-  margin-top: 30px;
   width: 700px;
 }
 
@@ -276,10 +303,18 @@ nav .right li a {
 .groupmakerform {
   width: 700px;
   .panel-body select {
-    width: 300px;
+    width: 50%;
+    border: 1px solid rgba(white, .5);
     background: rgba(white, 0);
     color: white;
     display: inline-block;
+    option:first-child {
+      color: rgba(white, .5);
+    }
+    &:focus {
+      outline: none;
+      border: 1px solid #26a69a;
+    }
   }
   button.btn {
     width: 100%;
@@ -344,9 +379,9 @@ nav .right li a {
 }
 
 .groupmakderinput {
-  width: 300px;
+  width: 40%;
   display: inline-block;
-  margin-left: 30px;
+  margin-left: 9%;
   input {
     font-weight: normal;
     font-size: 1em;
