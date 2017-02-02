@@ -8,8 +8,4 @@
   <h2>User Name: {{currentUser?.name}}</h2>
 </div>
 
-<button type="button" (click)="showNewClassForm()">Add A Class</button>
-
 <newclass *ngIf="addingClass" [currentUser]="currentUser"></newclass>
-
-<!-- <newstudent [currentUser]="currentUser"></newstudent> -->

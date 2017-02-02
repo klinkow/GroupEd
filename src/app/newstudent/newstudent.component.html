@@ -3,7 +3,7 @@
     <h3 class="panel-title">New Student</h3>
   </div>
   <div class="panel-body">
-    <div>
+    <form (submit)="submitForm(newName.value, newMathScore.value, newReadingScore.value, newTreehouseScore.value); newName.value=''; newMathScore.value=''; newReadingScore.value=''; newTreehouseScore.value=''">
       <div>
         <label>Name:</label>
         <br>
@@ -27,7 +27,7 @@
         <br>
         <input #newTreehouseScore>
       </div>
-      <button (click)="submitForm(newName.value, newMathScore.value, newReadingScore.value, newTreehouseScore.value); newName.value=''; newMathScore.value=''; newReadingScore.value=''; newTreehouseScore.value=''">Add</button>
-    </div>
+      <button type="submit" class="btn">Add</button>
+    </form>
   </div>
 </div>

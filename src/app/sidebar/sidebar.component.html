@@ -1,18 +1,18 @@
-
+<script>$('.collapsible').collapsible();</script>
 <ul class="collapsible" data-collapsible="accordion">
   <li>
-    <div class="collapsible-header" routerLink="display-classes"><i class="material-icons"></i>Classes</div>
+    <div class="collapsible-header"><i class="material-icons"></i>Classes</div>
     <div class="collapsible-body">
-      <ul>
-        <li *ngFor="let class of classes"><a (click)="showClass(class.id)">{{class.name}}</a></li>
+      <ul watch>
+        <li *ngFor="let class of classes"><a>{{class.name}}</a></li>
       </ul>
     </div>
   </li>
   <li>
     <div class="collapsible-header"><i class="material-icons"></i>Students</div>
     <div class="collapsible-body">
-      <ul *ngIf="currentUser?.students">
-        <li *ngFor="let student of currentUser?.students"><a (click)="showStudent(student.id)">{{student.name}}</a></li>
+      <ul *ngIf="currentUser?.students" watch>
+        <li *ngFor="let student of currentUser?.students"><a >{{student.name}}</a></li>
       </ul>
     </div>
   </li>
