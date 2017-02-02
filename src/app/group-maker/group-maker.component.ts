@@ -1,47 +1,70 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Student } from '../student.model';
 import { Group } from '../group.model';
 import { Class } from '../class.model';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Observable } from 'rxjs/Rx';
+import { UserService } from '.././user.service';
 
 @Component({
   selector: 'app-group-maker',
   templateUrl: './group-maker.component.html',
   styleUrls: ['./group-maker.component.css'],
+  providers: [UserService]
 })
 
 
 
 export class GroupMakerComponent {
+  @Input() currentUser;
+  @Input() classes;
   students: Student[] = [];
-  ploodents: FirebaseListObservable<any[]>;
-  constructor(private angularFire: AngularFire) {
-    this.angularFire.database.list('/students', { preserveSnapshot: true})
-        .subscribe(snapshots=>{
-            snapshots.forEach(snapshot => {
-              this.students.push(snapshot.val());
-            });
-        })
-    this.ploodents = angularFire.database.list('students');
+  public uid: string;
+
+  constructor(private af: AngularFire, private userService: UserService) {
+    // this.af.database.list('/students', { preserveSnapshot: true})
+    //     .subscribe(snapshots=>{
+    //         snapshots.forEach(snapshot => {
+    //           this.students.push(snapshot.val());
+    //         });
+    //     })
+
+
+
+    this.af.auth.subscribe(user => {
+      this.uid = user.uid;
+    })
+
+    this.userService.getUser(this.uid).subscribe(lastData => {
+      this.currentUser = lastData;
+      console.log("CURRENTUSER:");
+      console.log(this.currentUser);
+    });
+
+    this.af.database.list('/users/' + this.uid + '/classes').subscribe(lastData => {
+      this.classes = lastData;
+      // console.log("Casdfadsf:");
+      // console.log(this.classes[0].students);
+      // var dataIn = this.classes[0].students;
+      // this.getStudentsFromUser(dataIn);
+    })
+
   }
 
   ngOnInit() {
   }
 
-  runFunctionClick : boolean = false;
+  // getStudentsFromUser(thing) {
+  //   console.log(thing);
+  //   var pludents = [];
+  //   thing.forEach((student) => {
+  //     pludents.push(student);
+  //     console.log(pludents);
+  //   });
+  //   debugger;
+  //   console.log(pludents);
+  //   };
 
-  runFunction() {
-    console.log(this.students);
-  }
-
-  show() {
-      this.runFunctionClick = true;
-  }
-
-  getStudents(){
-    return this.ploodents;
-  }
 
   numberOfGroups : number;
   numberOfStudents : number = this.students.length;

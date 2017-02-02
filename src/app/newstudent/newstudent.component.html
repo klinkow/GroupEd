@@ -1,27 +1,30 @@
-<div class="panel panel-default">
+<div class="panel panel-default newstudentform">
   <div class="panel-heading">
     <h3 class="panel-title">New Student</h3>
   </div>
   <div class="panel-body">
+<<<<<<< HEAD
     <form (submit)="submitForm(newName.value, newMathScore.value, newReadingScore.value, newTreehouseScore.value); newName.value=''; newMathScore.value=''; newReadingScore.value=''; newTreehouseScore.value=''">
       <div>
         <label>Name:</label>
         <br>
         <input #newName autofocus>
+=======
+    <div>
+      <div class="studentinput">
+        <input placeholder="Student Name" #newName>
+>>>>>>> 9c576b042432d20ac6cee18a59a3bc57c4da0092
       </div>
 
-      <div>
-        <label>Math Score:</label>
-        <br>
-        <input #newMathScore>
+      <div class="studentinput">
+        <input placeholder="Math Score" #newMathScore>
       </div>
 
-      <div>
-        <label>Reading Score:</label>
-        <br>
-        <input #newReadingScore>
+      <div class="studentinput">
+        <input placeholder="Reading Score" #newReadingScore>
       </div>
 
+<<<<<<< HEAD
       <div>
         <label>Treehouse Score:</label>
         <br>
@@ -29,5 +32,12 @@
       </div>
       <button type="submit" class="btn">Add</button>
     </form>
+=======
+      <div class="studentinput">
+        <input placeholder="Treehouse Score" #newTreehouseScore>
+      </div><br>
+      <button class="btn" (click)="submitForm(newName.value, newMathScore.value, newReadingScore.value, newTreehouseScore.value); newName.value=''; newMathScore.value=''; newReadingScore.value=''; newTreehouseScore.value=''">Add Student</button>
+    </div>
+>>>>>>> 9c576b042432d20ac6cee18a59a3bc57c4da0092
   </div>
 </div>

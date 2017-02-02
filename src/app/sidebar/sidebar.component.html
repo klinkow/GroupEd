@@ -1,4 +1,4 @@
-<script>$('.collapsible').collapsible();</script>
+<div class="absolute-sidebar">
 <ul class="collapsible" data-collapsible="accordion">
   <li>
     <div class="collapsible-header"><i class="material-icons"></i>Classes</div>
@@ -11,9 +11,10 @@
   <li>
     <div class="collapsible-header"><i class="material-icons"></i>Students</div>
     <div class="collapsible-body">
-      <ul *ngIf="currentUser?.students" watch>
-        <li *ngFor="let student of currentUser?.students"><a >{{student.name}}</a></li>
+      <ul *ngIf="currentUser?.students">
+        <li *ngFor="let student of currentUser.students"><a (click)="showStudent(student.id)">{{student.name}}</a></li>
       </ul>
     </div>
   </li>
 </ul>
+</div>

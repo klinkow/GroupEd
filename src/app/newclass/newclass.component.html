@@ -1,26 +1,23 @@
-<div class="panel panel-default">
+<div class="panel panel-default newclassform">
   <div class="panel-heading">
     <h3 class="panel-title">New Class</h3>
   </div>
   <div class="panel-body">
     <div>
-      <div>
-        <label>Name:</label>
-        <br>
-        <input #newName>
+      <div class="classinput">
+        <input placeholder="Class Name" #newName>
       </div>
 
-      <div>
-        <label>Subject:</label>
-        <br>
-        <input #newSubject>
+      <div class="classinput">
+        <input placeholder="Subject" #newSubject>
       </div>
       <ul>
         <li *ngFor="let student of students">{{student.name}}</li>
       </ul>
       <newstudent (newStudentSender)="addStudent($event)"></newstudent>
 
-      <button class="btn" (click)="submitForm(newName.value, newSubject.value); newName.value=''; newSubject.value=''">Add</button>
+      <button class="btn" (click)="submitForm(newName.value, newSubject.value); newName.value=''; newSubject.value=''">Add Class</button>
+      <newstudent (newStudentSender)="addStudent($event)"></newstudent>
     </div>
   </div>
 </div>

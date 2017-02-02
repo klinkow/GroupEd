@@ -1,16 +1,17 @@
-<h2>Login</h2>
-<form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
-  <p>
-    <label> Email Address:
+<div class="login">
+  <div class="loginbox">
+  <h2>Log In</h2>
+  <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+      <label> Email Address:
         <input type="text" name="email" (ngModel)="email" required>
-    </label>
-  </p>
-  <p>
-    <label> Password:
-        <input type="password" name="password" (ngModel)="password" required>
-    </label>
-  </p>
+      </label><br>
 
-    <button type="submit" [disabled]="!formData.valid">Submit</button>
-    <a routerLink="/signup">Don't have an account?</a>
-</form>
+      <label> Password:
+        <input type="password" name="password" (ngModel)="password" required>
+      </label><br>
+
+      <button class="btn" type="submit" [disabled]="!formData.valid">Submit</button><br>
+      <a routerLink="/signup">Don't have an account?</a>
+  </form>
+</div>
+</div>
