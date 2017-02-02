@@ -17,6 +17,7 @@ export class DisplayClassesComponent implements OnInit {
   @Input() classes;
   public selectedClass = null;
   public toggleClassForm: boolean = false;
+  public hidden = true;
   constructor(private router: Router, private af: AngularFire) {}
 
   ngOnInit() { }
@@ -34,4 +35,8 @@ export class DisplayClassesComponent implements OnInit {
     console.log(this.toggleClassForm)
   }
 
+  deleteClass() {
+    this.hidden = false;
+    // console.log(this.toggleClassForm)
+  }
 }
