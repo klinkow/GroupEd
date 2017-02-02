@@ -1,13 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+//display-groups
+//groupmaker (displaygroup: generate group button-> show group maker)
+//newclass(inside displayclass)
+//newstudent(inside displaystudent, newclass)
+//student-detail
+
 *, html {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
 body {
+  height: calc(100vh-120px);
+  margin-bottom: 0px;
+}
+
+.row {
+  height: calc(100vh-120px);
   background: url("img/bg-img.jpg");
   background-position:center;
   background-repeat: no-repeat;
   background-size: cover;
+  margin-bottom: 0;
 }
 
 //splash page
@@ -30,6 +47,7 @@ body {
   p {
     font-size: 2em;
     line-height: 2.5em;
+    font-weight: 100;
   }
 }
 
@@ -49,7 +67,7 @@ nav, .nav-wrapper {
 }
 nav .brand-logo {
   margin-left: 25px;
-  font-weight: bold;
+  font-weight: 800;
   font-size: 3em;
   letter-spacing: 1px;
   width: 0;
@@ -147,6 +165,7 @@ nav .right li a {
   padding-top: 50px;
   box-shadow: none;
   border: none;
+  height: calc(100vh - 120px);
 }
 
 .collapsible-header {
@@ -166,16 +185,22 @@ nav .right li a {
   }
 }
 
-//display-class
+//display-class, display-students
+.row .col.10s {
+  height: calc(100vh - 120px);
+}
+
 .card-container {
   padding-top: 50px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .class-card, .student-card {
-  flex-basis: 30%;
-  margin: 20px 1.5%;
+  flex-basis: 31%;
+  margin-top: 20px;
+  margin-bottom: bottom;
   .existingcard {
     background: none;
     border: 5px solid white;
@@ -209,8 +234,6 @@ nav .right li a {
     height: 85px;
     transform: translate(-2.5%, -2.5%);
     filter: invert(100%);
-    // margin-top: 10px;
-    // margin-left: 10px;
     transition: all .3s;
   }
   &:hover {
