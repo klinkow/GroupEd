@@ -3,8 +3,8 @@
 <sidebar [currentUser]="currentUser" [classes]="classes" class="col s2 sidebar"></sidebar>
 
   <div class="col s10">
- <app-display-classes></app-display-classes>
- <!-- <app-display-students></app-display-students> -->
+ <app-display-classes [currentUser]="currentUser" [classes]="classes"></app-display-classes>
+ <app-display-students></app-display-students>
 
 <newclass *ngIf="addingClass" [currentUser]="currentUser"></newclass>
 </div>

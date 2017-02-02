@@ -37,17 +37,17 @@ export class GroupMakerComponent {
 
     this.userService.getUser(this.uid).subscribe(lastData => {
       this.currentUser = lastData;
-      console.log("CURRENTUSER:");
       console.log(this.currentUser);
     });
 
     this.af.database.list('/users/' + this.uid + '/classes').subscribe(lastData => {
       this.classes = lastData;
+      console.log(this.classes)
+    })
       // console.log("Casdfadsf:");
       // console.log(this.classes[0].students);
       // var dataIn = this.classes[0].students;
       // this.getStudentsFromUser(dataIn);
-    })
 
   }
 

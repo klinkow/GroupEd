@@ -14,7 +14,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 })
 export class DisplayClassesComponent implements OnInit {
   @Input() currentUser;
-  classes: FirebaseListObservable<any[]>;
+  @Input() classes;
   public toggleClassForm: boolean = false;
   constructor(private router: Router, private angularFire: AngularFire) {
     // this.angularFire.database.list('/users', { preserveSnapshot: true})
@@ -41,12 +41,10 @@ export class DisplayClassesComponent implements OnInit {
     console.log(this.toggleClassForm)
   }
 
-
 smlasses : Class[] = [
-new Class("Class 1", "Math"),
-new Class("Class 2", "Math"),
-new Class("Class 3", "Math"),
-new Class("Class 4", "Math")
-
-]
+    new Class("Class 1", "Math"),
+    new Class("Class 2", "Math"),
+    new Class("Class 3", "Math"),
+    new Class("Class 4", "Math")
+  ]
 }
