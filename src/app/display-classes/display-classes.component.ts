@@ -25,7 +25,6 @@ export class DisplayClassesComponent implements OnInit {
     this.af.database.list('/users/' + this.currentUser.$key + '/classes/' + clickedClass.$key + '/students').subscribe(lastData => {
       clickedClass.students = lastData;
       this.selectedClass = clickedClass;
-      console.log(clickedClass);
     })
   }
 

@@ -3,6 +3,7 @@ import { Student } from '../student.model';
 import { Group } from '../group.model';
 import { Class } from '../class.model';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AuthguardService } from '.././authguard.service';
 import { Observable } from 'rxjs/Rx';
 import { UserService } from '.././user.service';
 
@@ -18,35 +19,21 @@ export class GroupMakerComponent {
   students : Student[];
   numberOfGroups: number;
   numberOfStudents : number;
+  uid: string;
 
-  constructor(private af: AngularFire, private userService: UserService) { }
+  constructor(private af: AngularFire, private as: AuthguardService, private userService: UserService) {
+    this.af.auth.subscribe(user => {
+      this.uid = user.uid;
+    })
+  }
 
   ngOnInit() {
     this.numberOfStudents = this.selectedClass.students.length;
+    this.students = this.selectedClass.students
     console.log(this.numberOfStudents)
   }
 
-
-
-
-  // submitHeterogeneously(scoreType, numberOfGroups) {
-  //   console.log(this.students, scoreType, parseInt(numberOfGroups));
-  //   this.groupHeterogeneously(this.students, scoreType, parseInt(numberOfGroups));
-  // }
-
-  // submitHomogeneously(scoreType, numberOfGroups) {
-  //   console.log(this.students, scoreType, parseInt(numberOfGroups));
-  //   this.groupHomogeneously(this.students, scoreType, parseInt(numberOfGroups));
-  //   // implement the input data to function;
-  // }
-  // submitHomogenouslyPlusStar(scoreType, numberOfGroups) {
-  //   console.log(this.students, scoreType, parseInt(numberOfGroups));
-  //   this.groupHomogeneouslyPlusStar(this.students, scoreType, parseInt(numberOfGroups));
-  //   // implement the input data to function;
-  // }
-
   sortDescending(students, scoreType, numberOfGroups) {
-
     var currentIndex : number = students.length
     var temporaryValue : Student;
     var randomIndex : number = 0;
@@ -60,11 +47,11 @@ export class GroupMakerComponent {
       students[randomIndex] = temporaryValue;
     }
 
-    var studentsSorted : Student[] = [];
+    var studentsSorted = [];
 
     for (var i = 5; i > -1; i--) {
       students.forEach((student) => {
-        if (student.scoreType === i) {
+        if (parseInt(student[scoreType]) === i) {
           studentsSorted.push(student);
         };
       });
@@ -136,7 +123,12 @@ export class GroupMakerComponent {
       };
       students.splice(0, this.numberOfStudents/this.numberOfGroups);
     };
-    return groups;
+
+    groups.forEach((group) => {
+      console.log("GROUPS HOMOGENOUS");
+      console.log(group.students);
+    });
+
   }
 
   makeGroupsHomogenouslyPlusStar(students) {
@@ -222,8 +214,20 @@ export class GroupMakerComponent {
 
 
   groupHeterogeneously(scoreType, numberOfGroups) {
-    console.log(this.selectedClass)
-    this.makeGroupsHetero(this.snakeStudents(this.sortDescending(this.students, scoreType, numberOfGroups)));
+    var groups = this.makeGroupsHetero(this.snakeStudents(this.sortDescending(this.students, scoreType, numberOfGroups)));
+
+    groups.forEach((group) => {
+      this.af.database.list('/users/' + this.uid + '/classes/' + this.selectedClass.$key + '/groups').push({}).then((mystery) => {
+        console.log(mystery);
+        console.log(mystery.key());
+      group.students.forEach((student) => {
+        this.af.database.list('/users/' + this.uid + '/classes/' + this.selectedClass.$key + '/groups/' + mystery.key).push(student);
+      })
+    });
+      // push({}).subscribe((lastData) => {
+      //   group.students.forEach((student) => {lastData.push(student)})
+      // })
+    })
   }
 
   groupHomogeneously(scoreType, numberOfGroups) {
