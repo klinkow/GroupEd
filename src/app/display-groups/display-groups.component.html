@@ -1,5 +1,5 @@
 <div class="container">
-
+<h1 class="page-title">Groups</h1>
   <div class="card-container">
     <!-- change ngFor info to grab group instead of student -->
     <div *ngFor= "let student of students" class="group-card">
@@ -10,7 +10,9 @@
         <div class="content">
           <ul>
             <!-- change {{student}} to group.student -->
-            <li>{{student}}</li>
+            <!-- link student-detail to li to display detail -->
+            <!-- hook up student info to student detail component-->
+            <li class="student">{{student}}<app-student-detail></app-student-detail></li>
           </ul>
         </div>
        </div>
