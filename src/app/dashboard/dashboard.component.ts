@@ -30,7 +30,9 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  ngOnInit() {  }
+  ngOnInit() {
+    console.log(this.currentUser)
+   }
 
   toggleNewClassForm() {
     this.addingClass = !this.addingClass;

@@ -11,5 +11,4 @@ export class DisplayGroupsComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

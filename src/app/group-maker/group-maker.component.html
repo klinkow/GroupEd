@@ -1,14 +1,22 @@
 <div class="container">
-  <form>
-    <select #newScoreType>
-      <option value=''></option>
-      <option value='treehouseScore'>Tree House</option>
-      <option value='mathScore'>Math</option>
-      <option value='readingScore'>English</option>
-    </select>
-    <input #newNumberOfGroup placeholder="Number of Groups">
-    <button (click)="groupHeterogeneously(newScoreType.value, newNumberOfGroup.value); newScoreType.value=''; newNumberOfGroup.value='';">Heterogeneous Group</button>
-    <button (click)="submitHomogeneously(newScoreType.value, newNumberOfGroup.value); newScoreType.value=''; newNumberOfGroup.value='';">Homogeneous Group</button>
-    <button (click)="submitHomogeneouslyPlusStar(newScoreType.value, newNumberOfGroup.value); newScoreType.value=''; newNumberOfGroup.value=''">Homogeneous Group with a Star Student</button>
-  </form>
+  <div class="panel panel-default groupmakerform">
+    <div class="panel-heading">
+      <h3 class="panel-title">Generate Groups</h3>
+    </div>
+    <div class="panel-body">
+      <select #newScoreType>
+        <option value='' disabled selected>Select a Subject</option>
+        <!-- <option value='treehouseScore'>Tree House</option> -->
+        <option value='mathScore'>Math</option>
+        <option value='readingScore'>English</option>
+      </select>
+      <div class="groupmakderinput">
+        <input #newNumberOfGroup placeholder="Number of Groups">
+      </div>
+      <div class="buttons">
+        <button class="btn" (click)="groupHeterogeneously(newScoreType.value, newNumberOfGroup.value); newScoreType.value=''; newNumberOfGroup.value='';">Heterogeneous Group</button>
+        <button class="btn" (click)="groupHomogeneously(newScoreType.value, newNumberOfGroup.value); newScoreType.value=''; newNumberOfGroup.value='';">Homogeneous Group</button>
+        <button class="btn" (click)="groupHomogeneouslyPlusStar(newScoreType.value, newNumberOfGroup.value); newScoreType.value=''; newNumberOfGroup.value=''">Homogeneous Group with a High Score Student</button>
+      </div>
+  </div>
 </div>

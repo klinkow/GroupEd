@@ -1,21 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
-//display-groups
-//groupmaker (displaygroup: generate group button-> show group maker)
-//newstudent(inside newclass)
-//student-detail
-
 *, html {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 body {
   background: url("img/bg-img.jpg");
   background-position:center;
-  background-repeat: no-repeat;
   background-size: cover;
   margin-bottom: 0px;
   position: relative;
@@ -25,6 +19,30 @@ body {
   margin-bottom: 0;
 }
 
+.page-title {
+  margin-top: 40px;
+  color: #26a69a;
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 5em;
+  font-weight: 200;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: white;
+}
+
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #26a69a;
+  -webkit-box-shadow: none;
+  -webkit-background: rgba(white, 0);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 //navbar
 nav, .nav-wrapper {
   height: 80px;
@@ -32,20 +50,21 @@ nav, .nav-wrapper {
 }
 nav .brand-logo {
   margin-left: 25px;
-  font-weight: 800;
-  font-size: 3em;
+  font-weight: lighter;
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 3.5em;
   letter-spacing: 1px;
   width: 0;
   line-height: 1.7em;
   height: 1.5em;
+  margin-top: -5px;
   transition: all .5s;
+  color: #26a69a;
   &:visited, &:active, &:focus {
-    color: white;
     text-decoration: none;
   }
   &:hover {
-    width: 180px;
-    color: #26a69a;
+    width: 212px;
     text-decoration: none;
     border-bottom: 6px solid #26a69a;;
   }
@@ -72,9 +91,11 @@ nav .right li a {
   margin: auto;
   min-height: calc(100vh - 120px);
   h1 {
+    font-family: 'Fredericka the Great', cursive;
     margin: 80px;
-    font-size: 6em;
-    font-weight: normal;
+    font-size: 11em;
+    letter-spacing: 3px;
+    font-weight: lighter;
   }
   h3 {
     font-size: 3em;
@@ -117,8 +138,10 @@ nav .right li a {
     font-size: 1.6em;
   }
   input {
+    font-family: 'Coming Soon', cursive;
     font-weight: normal;
     font-size: 1em;
+    color: white;
     &:focus {
       color: #26a69a;
     }
@@ -133,12 +156,10 @@ nav .right li a {
     background: #26a69a;
     opacity: .7;
     transition: .3s;
-    // background: #9e9e9e;
     &:hover, &:focus {
       color: white;
       background: #26a69a;
       opacity: 1;
-      // background: darken(rgb(255, 165, 80), 10%);
     }
   }
   a {
@@ -152,7 +173,9 @@ nav .right li a {
 }
 
 //sidebar
-
+.sidbar, .row .col.2s {
+  width: 250px
+}
 .absolute-sidebar {
   background: darken(rgb(255, 165, 80), 10%);
   width: 250px;
@@ -185,12 +208,9 @@ nav .right li a {
   }
 }
 
-// .collapsible-body {
-//   display: inline-block;
-// }
-
 //display-class, display-students
-.row .col.10s {
+.row .col.s10 {
+  margin-left: 250px;
   min-height: calc(100vh - 120px);
 }
 
@@ -201,10 +221,7 @@ nav .right li a {
   justify-content: space-between;
 }
 
-.class-card, .student-card {
-  // @media screen and (max-width: 1550px) {
-  //   width: 100px;
-  // }
+.class-card, .student-card, .group-card {
   flex-basis: 31%;
   margin-top: 20px;
   margin-bottom: bottom;
@@ -213,11 +230,34 @@ nav .right li a {
     border: 5px solid white;
     border-radius: 3px;
     transition: all .3s;
+    position: relative;
   }
   .card-title {
     font-weight: bold;
     font-size: 2em;
     transition: all .3s;
+  }
+  .delete {
+    position: absolute;
+    right: 7px;
+    bottom: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    img {
+      opacity: .6;
+      filter: invert(100%);
+      width: 100%;
+      height: 100%;
+      transform: scale(1.2) rotate(45deg);
+    }
+    &:hover {
+      background: rgba(red, .7);
+      cursor: pointer;
+      img {
+        opacity: 1;
+      }
+    }
   }
   &:hover {
     .existingcard {
@@ -232,6 +272,7 @@ nav .right li a {
 .add-card {
   margin-top: 30px;
   margin-left: 30px;
+  margin-bottom: 30px;
   width: 70px;
   height: 70px;
   border-radius: 100%;
@@ -248,7 +289,58 @@ nav .right li a {
   }
 }
 
-//newclass form, newstudent form
+.group-card {
+  .card-content .card-title {
+    padding-bottom: 20px;
+    border-bottom: 3px solid white;
+  }
+  &:hover {
+    .card-content .card-title {
+      border-bottom: 3px solid #26a69a;
+    }
+  }
+  .content {
+    padding-top: 10px;
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+  }
+  //studentdetail
+  .student {
+    position: relative;
+    font-family: 'Coming Soon', cursive;
+    margin-bottom: 12px;
+    flex-basis: 50%;
+    font-size: 1.2em;
+    .studentdetail {
+      position: absolute;
+      width: 160px;
+      height: 100px;
+      border-radius: 2px;
+      background: lighten(#26a69a, 46%);
+      top: 0;
+      left: 70%;
+      z-index: 2;
+      display: none;
+      li {
+        color: lighten(black, 30%);
+        margin: 10px;
+        flex-basis: 100%;
+        font-size: .8em;
+      }
+    }
+    &:hover {
+      color: lighten(#26a69a, 40%);
+      .studentdetail {
+        display: block;
+      }
+    }
+  }
+}
+
+//newclass form, newstudent form, group maker form
 .panel {
   background: rgba(white, 0.2);
   button.btn {
@@ -259,14 +351,13 @@ nav .right li a {
     padding: 2px 10px;
     color: darken(white, 60%);
     &:hover, &:focus, &:active {
-      background: #26a69a;;
+      background: #26a69a;
       color: white;
     }
   }
 }
 
 .newclassform {
-  margin-top: 30px;
   width: 700px;
 }
 
@@ -274,6 +365,28 @@ nav .right li a {
   background: rgba(white, 0);
   button.btn {
     margin: 5px 0 0 0;
+  }
+}
+
+.groupmakerform {
+  width: 700px;
+  .panel-body select {
+    width: 50%;
+    border: 1px solid rgba(white, .5);
+    background: rgba(white, 0);
+    color: white;
+    display: inline-block;
+    option:first-child {
+      color: rgba(white, .5);
+    }
+    &:focus {
+      outline: none;
+      border: 1px solid #26a69a;
+    }
+  }
+  button.btn {
+    width: 100%;
+    display: block;
   }
 }
 
@@ -297,10 +410,12 @@ nav .right li a {
   }
   input {
     font-weight: normal;
-    font-size: .8em;
+    font-size: 1em;
     color: white;
     border-bottom: 1px solid rgba(white, .5);
+    font-family: 'Coming Soon', cursive;
     &::placeholder {
+      font-family: 'Nunito', sans-serif;
       color: rgba(white, .5);
     }
     &:focus, &:active {
@@ -311,7 +426,7 @@ nav .right li a {
 }
 
 .studentinput {
-  width: 100px;
+  width: 19%;
   margin-right: 10px;
   display: inline-block;
   &:first-of-type{
@@ -321,10 +436,32 @@ nav .right li a {
   }
   input {
     font-weight: normal;
-    font-size: .8em;
+    font-size: 1em;
+    color: white;
+    border-bottom: 1px solid rgba(white, .5);
+    font-family: 'Coming Soon', cursive;
+    &::placeholder {
+      font-family: 'Nunito', sans-serif;
+      color: rgba(white, .5);
+    }
+    &:focus, &:active {
+      color: #26a69a;;
+    }
+  }
+}
+
+.groupmakderinput {
+  width: 40%;
+  display: inline-block;
+  margin-left: 9%;
+  input {
+    font-family: 'Coming Soon', cursive;
+    font-weight: normal;
+    font-size: 1em;
     color: white;
     border-bottom: 1px solid rgba(white, .5);
     &::placeholder {
+      font-family: 'Nunito', sans-serif;
       color: rgba(white, .5);
     }
     &:focus, &:active {

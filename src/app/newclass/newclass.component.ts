@@ -4,13 +4,12 @@ import { Class } from '../class.model';
 import { Student } from '../student.model';
 import { AngularFire } from 'angularfire2';
 
-
-
 @Component({
   selector: 'newclass',
   templateUrl: './newclass.component.html',
   styleUrls: ['./newclass.component.css']
 })
+
 export class NewclassComponent {
   @Input() currentUser;
   @Output() formSubmitSender = new EventEmitter();
